@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorpresa</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #7dadeb;
+            color: #5179ad;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .message {
+            font-size: 1.3em;
+            display: none;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #336bbe;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff1a4d;
+        }
+
+        .carousel-container {
+            display: none;
+            margin-top: 20px;
+            width: 90%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .carousel-image {
+            width: 100%;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .video-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .message {
+                font-size: 1.1em;
+            }
+            button {
+                font-size: 1em;
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <audio controls>
+        <source src="TV Girl - Lovers Rock (Sub. Español).mp3" type="audio/mpeg">
+    </audio>
+
+    <h1>Mi amor, te deseo un feliz 14 de febrero 💗</h1>
+    <p class="message">Mi niña como decirte y compartirte que desde que te conozco has sido lo mejor de mi vida</p>
+    <p class="message">haciendo de mis días tan galomoriosos, le das vida a los atardeceres, le das paz a las noches,</p>
+    <p class="message">y le das calor a mis mañanas, gracias por todo y aunque me falta decirte muchas más cosas</p>
+    <p class="message"> es mejor que veas todos los momentos que compartimos juntos y que notes lo feliz que eh sido a tu lado mi amor, gracias por amarme y soy feliz de amarte</p>
+    <button id="show-carousel-btn" onclick="showMore()">Ver nuestros momentos:</button>
+
+
+    <div class="carousel-container">
+        <img class="carousel-image active" src="WhatsApp Image 2025-02-12 at 20.07.00 (1).jpeg" alt="Amor 1">
+        <img class="carousel-image" src="WhatsApp Image 2025-02-12 at 20.07.00.jpeg" alt="Amor 2">
+        <img class="carousel-image" src="WhatsApp Image 2025-02-12 at 20.07.01 (1).jpeg" alt="Amor 4">
+        <img class="carousel-image" src="WhatsApp Image 2025-02-12 at 20.07.01.jpeg" alt="Amor 4">
+        <img class="carousel-image" src="WhatsApp Image 2025-02-12 at 20.07.02 (1).jpeg" alt="Amor 4">
+        <img class="carousel-image" src="WhatsApp Image 2025-02-12 at 20.07.02 (2).jpeg" alt="Amor 4">
+        <img class="carousel-image" src="WhatsApp Image 2025-02-12 at 20.07.02.jpeg" alt="Amor 4">
+        <img class="carousel-image" src="WhatsApp Image 2025-02-12 at 20.07.03 (1).jpeg" alt="Amor 4">
+        <img class="carousel-image" src="WhatsApp Image 2025-02-12 at 20.07.03.jpeg" alt="Amor 4">
+        <img class="carousel-image" src="WhatsApp Image 2025-02-12 at 20.07.04.jpeg" alt="Amor 5">
+        
+    </div>
+
+
+   <script>
+       function showMore() {
+           document.querySelectorAll('.message').forEach(msg => msg.style.display = "block");
+           document.querySelector('.carousel-container').style.display = "block";
+           document.getElementById('show-carousel-btn').style.display = "none";
+           
+           let index = 0;
+           const images = document.querySelectorAll('.carousel-image');
+           const videoButton = document.getElementById('show-video-button');
+
+           let interval = setInterval(() => {
+               images.forEach(img => img.classList.remove('active'));
+
+               if (index < images.length) {
+                   images[index].classList.add('active');
+                   index++;
+               } else {
+                   clearInterval(interval);
+                   videoButton.style.display = "block";
+               }
+           }, 3000);
+       }
+
+       function showVideo() {
+           document.querySelector('.video-container').style.display = "block";
+           document.getElementById('show-video-button').style.display = "none";
+       }
+   </script>
+
+</body>
+</html>
